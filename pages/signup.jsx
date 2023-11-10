@@ -20,22 +20,25 @@ const Form = styled.form`
 const Text = styled.text`
   text-align: center;
 `
-function LoginPage () {
+function SignupPage () {
   return (
     <ImageWithSpace>
       <H1># SOCIAL DEV </H1>
       <H4>Tudo que acontece no mundo, está aqui!</H4>
       <FormConteiner>
-        <H2>Entre em sua conta</H2>
+        <H2>Cria sua conta</H2>
         <Form> 
-          <Input Label="Email ou usuário" type="email" />
+          <Input Label="Nome" />
+          <Input Label="Sobrenome" />
+          <Input Label="Usuário" />
+          <Input Label="Email" type="email" />
           <Input Label="Senha" type="password"/>
           <Button>Entrar</Button>
         </Form>
-        <Text>Não possui uma conta? <Link href="/signup"> Faça seu cadastro</Link></Text>
+        <Text>Já possui uma conta? <Link href="/login"> Faça seu login</Link></Text>
       </FormConteiner>
            
     </ImageWithSpace>
   )
 }
-export default LoginPage
+export default SignupPage
