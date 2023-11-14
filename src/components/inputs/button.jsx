@@ -14,5 +14,10 @@ const Button = styled.button`
   : hover {
     background-color: ${props => props.theme.primaryHover};
   }
+  
+  :disabled {
+    background-color: ${props => props.theme.disabled};
+    cursor: default;
+  }
 `
 export default Button
