@@ -1,6 +1,3 @@
-/* arquivo responsavel para criar um "modelo" para o banco de dados saber 
-quais tipos de arquivos vão ser armazenados */
-
 import mongoose from 'mongoose'
 
 
