@@ -13,7 +13,6 @@ import H2 from '../src/components/typograpy/h2'
 import H4 from '../src/components/typograpy/h4'
 import Button from '../src/components/inputs/button'
 import Input from '../src/components/inputs/Input'
-import login from './api/user/login'
 
 const FormConteiner = styled.div`
   margin-top: 60px;
@@ -24,18 +23,36 @@ const Form = styled.form`
   margin: 20px 0;
   gap: 20px;
 `
-const Text = styled.text`
+const Text = styled.p`
   text-align: center;
 `
 function LoginPage () {
-  const router = useRouter
+  const router = useRouter()
   const { control, handleSubmit, formState: { errors }, setError } = useForm({
     resolver: joiResolver(loginSchema)
   })
 
-  const onSubmit = (data) => {
-    console.log(data)
+  const onSubmit = async (data) => {
+    try {
+      const { status } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/user/login`, data)
+      if (status === 200){
+        router.push('/')
+      }
 
+    } catch ({ response }) {
+      if (response.data === 'password incorrect') {
+        setError('password', {
+          message: 'A senha está incorreta.'
+        })
+      }
+      else if (response.data === 'not found') {
+        setError ('userOrEmail', {
+          message: 'usuário ou e-mail não encontrado.'
+        })
+      }
+      console.log(response.data)
+
+    }
   }
 
   return (

@@ -29,7 +29,7 @@ export const login = async (body) => {
 
     if (!user) throw new Error('not found')
     const passwordIsCorret = comparePassword(body.password, user.password)
-    if (!passwordIsCorret) throw new Error('Incorrect password.')
+    if (!passwordIsCorret) throw new Error('password incorrect')
 
     return user
   } catch (err) {
