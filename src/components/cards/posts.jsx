@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 import moment from 'moment'
 
+import Menu from '../navigation/Menu'
+
+
 const PostContainer = styled.div`
   background-color: ${props => props.theme.white};
   padding: 20px;
@@ -19,10 +22,37 @@ const StyledDate = styled.p`
 const ContainerText = styled.div`
   margin-top: 10px;
 `
+const ContainerMenu = styled.div`
+  float: right;
+`
+
 
 function Post ({ text, user, date}) { 
+  const handleEdit = () => {
+    console.log("EDITAR PUBLICAÇÃO ")
+  }
+
+  const handleDelete = () => {
+    console.log("DELETAR PUBLICAÇÃO")
+  }
+
+
   return(
     <PostContainer>
+      <ContainerMenu>
+        <Menu 
+          options={[
+            {
+              text: 'Editar publicação',
+              onClick: handleEdit
+            },
+            {
+              text: 'Deletar publicação',
+              onClick: handleDelete
+            }
+          ]}
+        />
+      </ContainerMenu>
       <StyledUsername>@{user}</StyledUsername>
       <StyledDate>{moment(date).format('LLL')}</StyledDate>
       <ContainerText>
